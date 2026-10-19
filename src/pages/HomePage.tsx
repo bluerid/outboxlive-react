@@ -182,7 +182,7 @@ const HomePage: React.FC = () => {
                                                 navigate(`/?page=${newPage}`);
                                             }}
                                             disabled={page <= 1}
-                                            className="btn btn-outline-secondary"
+                                            className="btn btn-outline"
                                         >
                                             Previous
                                         </button>
@@ -195,7 +195,7 @@ const HomePage: React.FC = () => {
                                                 navigate(`/?page=${newPage}`);
                                             }}
                                             disabled={page >= pagination.totalPages}
-                                            className="btn btn-outline-secondary"
+                                            className="btn btn-outline"
                                         >
                                             Next
                                         </button>

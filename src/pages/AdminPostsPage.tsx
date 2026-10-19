@@ -188,7 +188,7 @@ const AdminPostsPage: React.FC = () => {
                                 <button
                                     onClick={() => {
                                         const newPage = Math.max(page - 1, 1);
-                                        navigate(`/?page=${newPage}`);
+                                        navigate(`/admin/posts/?page=${newPage}`);
                                     }}
                                     disabled={page <= 1}
                                     className="btn btn-outline"
@@ -201,7 +201,7 @@ const AdminPostsPage: React.FC = () => {
                                 <button
                                     onClick={() => {
                                         const newPage = Math.min(page + 1, pagination.totalPages);
-                                        navigate(`/?page=${newPage}`);
+                                        navigate(`/admin/posts?page=${newPage}`);
                                     }}
                                     disabled={page >= pagination.totalPages}
                                     className="btn btn-outline"
