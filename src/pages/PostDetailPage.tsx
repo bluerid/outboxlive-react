@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate, useParams } from 'react-router-dom';
+import CommentSection from '../components/CommentSection';
 
 const PostDetailPage: React.FC = () => {
     const { token, user, logout, loading: authLoading }: { token: string | null; user: any; logout: () => string; loading: boolean } = useAuth();
@@ -179,6 +180,9 @@ const PostDetailPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
+
+
+                <CommentSection postId={id} token={token} user={user} />
             </div>
         </div>
     );
