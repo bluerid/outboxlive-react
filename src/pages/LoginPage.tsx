@@ -12,7 +12,7 @@ const LoginPage: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.SubmitEvent) => {
         e.preventDefault();
         setLoading(true);
         setError(null);
@@ -57,50 +57,46 @@ const LoginPage: React.FC = () => {
     return (
         <div className="min-h-screen">
             <div className="page-container">
-                <div className="w-full max-w-md space-y-8">
-                    <div className="page-header">
-                        <div className="page-header-brand">OutboxLive</div>
-                        <div className="page-header-actions">
-
-                            <button
-                                onClick={() => navigate('/')}
-                                className="btn btn-primary"
-                            >
-                                Home
-                            </button>
-
-                        </div>
+                <div className="page-header">
+                    <div className="page-header-brand">OutboxLive</div>
+                    <div className="page-header-actions">
+                        <button
+                            onClick={() => navigate('/')}
+                            className="btn btn-primary"
+                        >
+                            Home
+                        </button>
                     </div>
-                    {error && (
-                        <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
-                            <p className="text-red-600">{error}</p>
-                        </div>
-                    )}
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                        <FormInput
-                            type="email"
-                            label="Email"
-                            value={email}
-                            onChange={setEmail}
-                            required
-                            disabled={loading}
-                        />
-                        <FormInput
-                            type="password"
-                            label="Password"
-                            value={password}
-                            onChange={setPassword}
-                            required
-                            disabled={loading}
-                        />
-                        <FormButton type="submit" disabled={loading} loading={loading} onClick={() => { }}>
-                            {loading ? 'Logging in...' : 'Login'}
-                        </FormButton>
-                    </form>
-                    <p className="text-center text-sm text-muted mt-6">
-                        Don't have an account? <a href="/register" className="text-primary hover:underline">Register</a>
-                    </p>
                 </div>
+                {error && (
+                    <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+                        <p className="text-red-600">{error}</p>
+                    </div>
+                )}
+                <form onSubmit={handleSubmit} className="space-y-6">
+                    <FormInput
+                        type="email"
+                        label="Email"
+                        value={email}
+                        onChange={setEmail}
+                        required
+                        disabled={loading}
+                    />
+                    <FormInput
+                        type="password"
+                        label="Password"
+                        value={password}
+                        onChange={setPassword}
+                        required
+                        disabled={loading}
+                    />
+                    <FormButton type="submit" disabled={loading} loading={loading} onClick={() => { }}>
+                        {loading ? 'Logging in...' : 'Login'}
+                    </FormButton>
+                </form>
+                <p className="text-center text-sm text-muted mt-6">
+                    Don't have an account? <a href="/register" className="text-primary hover:underline">Register</a>
+                </p>
             </div>
         </div>
     );

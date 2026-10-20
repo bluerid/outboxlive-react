@@ -16,28 +16,27 @@ interface PostCardProps {
 const PostCard: React.FC<PostCardProps> = ({ post }) => {
     const authorName = post.author?.name || 'Unknown';
     const date = post.createdAt ? new Date(post.createdAt).toLocaleDateString() : '';
+    const excerpt = post.content.length > 150 ? post.content.substring(0, 150) + '...' : post.content;
     const navigate = useNavigate();
 
-    const handleViewMore = () => {
+    const handleReadPost = () => {
         navigate(`/posts/${post._id}`);
     };
 
     return (
-        <div className="card hover:shadow-lg transition-shadow duration-200">
-            <div className="card-body">
-                <h3 className="card-title text-primary">{post.title}</h3>
-                <p className="card-content text-muted mb-4">
-                    {post.content}
-                </p>
-                <div className="flex text-sm text-muted mb-3">
-                    <span className="mr-4">By {authorName}</span>
-                    <span>{date}</span>
+        <div className="post-feed-card">
+            <div className="post-feed-card-content">
+                <h3 className="post-feed-card-title">{post.title}</h3>
+                <p className="post-feed-card-excerpt">{excerpt}</p>
+                <div className="post-feed-card-meta">
+                    <span className="post-feed-card-author">By {authorName}</span>
+                    <span className="post-feed-card-date">{date}</span>
                 </div>
                 <button
-                    onClick={handleViewMore}
-                    className="w-full text-left text-primary underline hover:no-underline"
+                    onClick={handleReadPost}
+                    className="post-feed-card-read-post"
                 >
-                    View More →
+                    Read post
                 </button>
             </div>
         </div>

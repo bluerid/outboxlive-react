@@ -70,7 +70,7 @@ const PostFormPage: React.FC = () => {
         }
     }, [token, id, navigate, authLoading]);
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.SubmitEvent) => {
         e.preventDefault();
         setLoading(true);
         setError(null);
@@ -175,11 +175,11 @@ const PostFormPage: React.FC = () => {
                         />
                     </div>
 
-                    <div className="flex justify-end space-x-3">
+                    <div className="flex justify-start">
                         <button
                             type="button"
                             onClick={() => navigate('/posts')}
-                            className="flex items-center justify-center btn btn-outline btn-md"
+                            className="flex items-center justify-center btn btn-outline btn-md mr-3"
                         >
                             Cancel
                         </button>

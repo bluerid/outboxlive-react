@@ -651,6 +651,10 @@ code {
   margin-bottom: var(--spacing-2);
 }
 
+.mr-3 {
+  margin-right: 1.2rem;
+}
+
 .btn {
     display: inline-flex;
     align-items: center;
@@ -686,10 +690,14 @@ code {
     user-select: none;
 }
 
+.pagination-info {
+    padding: var(--spacing-0) var(--spacing-4);
+}
+
 ::selection {
     background: #ede9fe;
     color: inherit;
-}git s
+}
 
 @media (max-width: 640px) {
   .page-container {

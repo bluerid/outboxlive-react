@@ -69,8 +69,8 @@ const PostsPage: React.FC = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-accent flex items-center justify-center">
-                <div className="text-center">
+            <div className="min-h-screen">
+                <div className="page-container">
                     <h3 className="text-primary">Loading your posts...</h3>
                 </div>
             </div>
@@ -79,8 +79,8 @@ const PostsPage: React.FC = () => {
 
     if (error) {
         return (
-            <div className="min-h-screen bg-accent flex items-center justify-center">
-                <div className="w-full max-w-md space-y-6">
+            <div className="min-h-screen">
+                <div className="page-container">
                     <h3 className="text-center text-primary mb-4">Error Loading Posts</h3>
                     <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
                         <p className="text-red-600">{error}</p>
@@ -152,7 +152,7 @@ const PostsPage: React.FC = () => {
                                 navigate(`/posts?page=${newPage}`);
                             }}
                             disabled={page <= 1}
-                            className="btn btn-primary"
+                            className="btn btn-outline"
                         >
                             Previous
                         </button>
@@ -165,7 +165,7 @@ const PostsPage: React.FC = () => {
                                 navigate(`/posts?page=${newPage}`);
                             }}
                             disabled={page >= pagination.totalPages}
-                            className="btn btn-primary"
+                            className="btn btn-outline"
                         >
                             Next
                         </button>

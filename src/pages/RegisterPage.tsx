@@ -13,7 +13,7 @@ const RegisterPage: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.SubmitEvent) => {
         e.preventDefault();
         setLoading(true);
         setError(null);
@@ -61,14 +61,12 @@ const RegisterPage: React.FC = () => {
                     <div className="page-header">
                         <div className="page-header-brand">OutboxLive</div>
                         <div className="page-header-actions">
-
                             <button
                                 onClick={() => navigate('/')}
                                 className="btn btn-primary"
                             >
                                 Home
                             </button>
-
                         </div>
                     </div>
                     {error && (

@@ -66,7 +66,7 @@ const HomePage: React.FC = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-accent flex items-center justify-center">
+            <div className="min-h-screen">
                 <div className="text-center">
                     <h3 className="text-primary">Loading...</h3>
                 </div>
@@ -146,64 +146,64 @@ const HomePage: React.FC = () => {
                         </div>
                     </div>
                 ) : (
-                    // Show posts or empty state
-                    <div className="posts-feed">
-                        {posts.length === 0 ? (
-                            <div className="text-center py-12">
-                                <h3 className="text-primary mb-4">No posts yet</h3>
-                                <p className="text-muted">
-                                    Be the first to share a post and start the conversation
-                                </p>
-                                {token ? (
-                                    <button
-                                        onClick={() => navigate('/posts/new')}
-                                        className="btn btn-primary"
-                                    >
-                                        Create First Post
-                                    </button>
-                                ) : (
-                                    <p className="text-muted mt-4">
-                                        Please log in to create posts
+                    <>
+                        <div className="posts-feed">
+                            {posts.length === 0 ? (
+                                <div className="text-center py-12">
+                                    <h3 className="text-primary mb-4">No posts yet</h3>
+                                    <p className="text-muted">
+                                        Be the first to share a post and start the conversation
                                     </p>
-                                )}
-                            </div>
-                        ) : (
-                            <>
-                                <div className="posts-grid">
+                                    {token ? (
+                                        <button
+                                            onClick={() => navigate('/posts/new')}
+                                            className="btn btn-primary"
+                                        >
+                                            Create First Post
+                                        </button>
+                                    ) : (
+                                        <p className="text-muted mt-4">
+                                            Please log in to create posts
+                                        </p>
+                                    )}
+                                </div>
+                            ) : (
+                                <>
                                     {posts.map((post) => (
                                         <PostCard key={post._id} post={post} />
                                     ))}
-                                </div>
-                                {pagination && (
-                                    <div className="pagination">
-                                        <button
-                                            onClick={() => {
-                                                const newPage = Math.max(page - 1, 1);
-                                                navigate(`/?page=${newPage}`);
-                                            }}
-                                            disabled={page <= 1}
-                                            className="btn btn-outline"
-                                        >
-                                            Previous
-                                        </button>
-                                        <span className="pagination-info">
-                                            Page {page} of {pagination.totalPages}
-                                        </span>
-                                        <button
-                                            onClick={() => {
-                                                const newPage = Math.min(page + 1, pagination.totalPages);
-                                                navigate(`/?page=${newPage}`);
-                                            }}
-                                            disabled={page >= pagination.totalPages}
-                                            className="btn btn-outline"
-                                        >
-                                            Next
-                                        </button>
-                                    </div>
-                                )}
-                            </>
+                                </>
+                            )}
+                        </div>
+
+                        {pagination && (
+                            <div className="pagination mt-4">
+                                <button
+                                    onClick={() => {
+                                        const newPage = Math.max(page - 1, 1);
+                                        navigate(`/?page=${newPage}`);
+                                    }}
+                                    disabled={page <= 1}
+                                    className="btn btn-outline"
+                                >
+                                    Previous
+                                </button>
+                                <span className="pagination-info">
+                                    Page {page} of {pagination.totalPages}
+                                </span>
+                                <button
+                                    onClick={() => {
+                                        const newPage = Math.min(page + 1, pagination.totalPages);
+                                        navigate(`/?page=${newPage}`);
+                                    }}
+                                    disabled={page >= pagination.totalPages}
+                                    className="btn btn-outline"
+                                >
+                                    Next
+                                </button>
+                            </div>
                         )}
-                    </div>
+                    </>
                 )}
             </div>
         </div>
