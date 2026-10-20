@@ -140,8 +140,8 @@ const AdminPostsPage: React.FC = () => {
                     </div>
                 ) : (
                     <>
-                        <div className="overflow-x-auto">
-                            <table className="min-w-full divide-y divide-gray-200">
+                        <div className="">
+                            <table className="" style={{ width: "stretch" }}>
                                 <thead>
                                     <tr>
                                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">

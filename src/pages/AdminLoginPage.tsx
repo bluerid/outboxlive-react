@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
+import AdminHeader from '../components/AdminHeader';
 
 const AdminLoginPage: React.FC = () => {
     const { login } = useAuth();
@@ -55,47 +56,45 @@ const AdminLoginPage: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen bg-accent">
-            <div className="flex items-center justify-center min-h-screen py-6">
-                <div className="w-full max-w-md space-y-8">
-                    <div>
-                        <h2 className="text-center text-2xl font-bold text-primary mb-6">
-                            Admin Login
-                        </h2>
-                        <p className="text-center text-muted max-w-xl">
-                            Sign in to access the admin dashboard and continue <span>OutBoxLive</span>
-                        </p>
+        <div className="min-h-screen">
+            <div className="page-container">
+                <AdminHeader />
+                <h2 className="text-center text-2xl font-bold text-primary mb-6">
+                    Admin Login
+                </h2>
+                <p className="text-center text-muted max-w-xl">
+                    Sign in to access the admin dashboard and continue <span>OutBoxLive</span>
+                </p>
+
+                {error && (
+                    <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+                        <p className="text-red-600">{error}</p>
                     </div>
-                    {error && (
-                        <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
-                            <p className="text-red-600">{error}</p>
-                        </div>
-                    )}
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                        <FormInput
-                            type="email"
-                            label="Email"
-                            value={email}
-                            onChange={setEmail}
-                            required
-                            disabled={loading}
-                        />
-                        <FormInput
-                            type="password"
-                            label="Password"
-                            value={password}
-                            onChange={setPassword}
-                            required
-                            disabled={loading}
-                        />
-                        <FormButton type="submit" disabled={loading} loading={loading} onClick={() => {}}>
-                            {loading ? 'Logging in...' : 'Login'}
-                        </FormButton>
-                    </form>
-                    <p className="text-center text-sm text-muted mt-6">
-                        Don't have an account? <a href="/register" className="text-primary hover:underline">Register</a>
-                    </p>
-                </div>
+                )}
+                <form onSubmit={handleSubmit} className="space-y-6">
+                    <FormInput
+                        type="email"
+                        label="Email"
+                        value={email}
+                        onChange={setEmail}
+                        required
+                        disabled={loading}
+                    />
+                    <FormInput
+                        type="password"
+                        label="Password"
+                        value={password}
+                        onChange={setPassword}
+                        required
+                        disabled={loading}
+                    />
+                    <FormButton type="submit" disabled={loading} loading={loading} onClick={() => { }}>
+                        {loading ? 'Logging in...' : 'Login'}
+                    </FormButton>
+                </form>
+                <p className="text-center text-sm text-muted mt-6">
+                    Don't have an account? <a href="/register" className="text-primary hover:underline">Register</a>
+                </p>
             </div>
         </div>
     );

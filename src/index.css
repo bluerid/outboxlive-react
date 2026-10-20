@@ -249,7 +249,7 @@ code {
   color: var(--color-text-secondary);
   margin-bottom: var(--spacing-4);
   line-height: 1.5;
-  display: -webkit-box;
+  display:inline-block;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -653,6 +653,38 @@ code {
 
 .mr-3 {
   margin-right: 1.2rem;
+}
+
+/* Prominent table header */
+table thead th {
+  background-color: #f3efff;
+  color: #35205f;
+  font-weight: 700;
+  font-size: 13px;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid #d8ccf5;
+}
+
+/* Comfortable table cells */
+table tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Alternating row backgrounds */
+table tbody tr:nth-child(odd) {
+  background-color: #f8f9fc;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+/* Hover highlight */
+table tbody tr:hover {
+  background-color: #eee8ff;
+  transition: background-color 0.15s ease;
 }
 
 .btn {
